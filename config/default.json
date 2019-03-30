@@ -1,0 +1,35 @@
+{
+  "AppInfo": {
+    "Env": "local",
+    "Slogan": "小灵通",
+    "Addr": ":3000"
+  },
+  "Log": {
+    "LogBasePath": "/app/log/",
+    "LogFileName": "phs-mp"
+  },
+  "DB": {
+    "DriverName": "mongodb",
+    "Host": "127.0.0.1",
+    "Port": "27017",
+    "DBName": "phs"
+  },
+  "Redis": {
+    "Host": "127.0.0.1",
+    "Port": "6379"
+  },
+  "Security": {
+    "Secret": "phs-87542701-bingyan-1997"
+  },
+  "EmailInfo": {
+    "From": "notice@bingyan.net",
+    "To": [
+      "329598642@qq.com",
+      "1294668013@qq.com",
+      "yun_tofar@qq.com"
+    ],
+    "UserName": "小灵通",
+    "AuthCode": "By87542701",
+    "Host": "smtp.exmail.qq.com"
+  }
+}
