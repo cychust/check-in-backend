@@ -42,7 +42,7 @@ import (
  *     }
  */
 /**
- * @api {post} /api/group CreateGroup
+ * @api {post} /api/v1/group CreateGroup
  * @apiVersion 1.0.0
  * @apiName CreateGroup
  * @apiGroup  group

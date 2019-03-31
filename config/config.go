@@ -1,11 +1,11 @@
 package config
 
 import (
+	"github.com/json-iterator/go"
 	"io/ioutil"
 	"log"
 	"os"
 	"strings"
-	jsoniter "github.com/json-iterator/go"
 )
 
 type Config struct {
@@ -42,6 +42,7 @@ type emailInfo struct {
 	AuthCode string   `json:"AuthCode"`
 	Host     string   `json:"Host"`
 }
+
 //
 type wechat struct {
 	AppID     string `json:"AppID"`
@@ -72,7 +73,8 @@ type redis struct {
 
 var Conf *Config
 
-var filePrefix  = "config/"
+var filePrefix = "config/"
+
 func init() {
 	log.Println("begin init config")
 	initConfig()
@@ -122,12 +124,12 @@ func initConfig() {
 		}
 	}
 
-	//if v, ok := os.LookupEnv("WeixinAppID"); ok {
-	//	Conf.Wechat.AppID = v
-	//}
-	//if v, ok := os.LookupEnv("WeixinAppSecret"); ok {
-	//	Conf.Wechat.AppSecret = v
-	//}
+	if v, ok := os.LookupEnv("WeixinAppID"); ok {
+		Conf.Wechat.AppID = v
+	}
+	if v, ok := os.LookupEnv("WeixinAppSecret"); ok {
+		Conf.Wechat.AppSecret = v
+	}
 	//if v, ok := os.LookupEnv("WebWeixinAppID"); ok {
 	//	Conf.WebWechat.AppID = v
 	//}

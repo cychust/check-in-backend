@@ -1,7 +1,7 @@
 define({ "api": [
   {
     "type": "post",
-    "url": "/api/group",
+    "url": "/api/v1/group",
     "title": "CreateGroup",
     "version": "1.0.0",
     "name": "CreateGroup",

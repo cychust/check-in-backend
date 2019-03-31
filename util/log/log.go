@@ -2,15 +2,18 @@ package log
 
 import (
 	"check-in-backend/config"
-	"os"
-	"path"
-	"time"
-	rotatelogs "github.com/lestrrat/go-file-rotatelogs"
+	"github.com/lestrrat/go-file-rotatelogs"
 	"github.com/pkg/errors"
 	"github.com/rifflock/lfshook"
 	"github.com/sirupsen/logrus"
+	"os"
+	"path"
+	"time"
 )
 
+func GetLogger() *logrus.Logger {
+	return getLogger(config.Conf.AppInfo.Env)
+}
 func getLogger(env string) *logrus.Logger {
 	logger := &logrus.Logger{
 		Out:       os.Stdout,

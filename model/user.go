@@ -4,7 +4,6 @@ import (
 	"check-in-backend/model/db"
 	"check-in-backend/util"
 	"gopkg.in/mgo.v2/bson"
-	"log"
 	"phs-mp-develop/src/constant"
 )
 
@@ -18,7 +17,7 @@ type User struct {
 	Province string `bson:"province" json:"province"` // 省份
 	City     string `bson:"city" json:"city"`         // 城市
 	Country  string `bson:"country" json:"country"`   // 国家
-	//AvatarURL string `bson:"avatar_url" json:"avatar_url"` // 用户头像
+	AvatarURL string `bson:"avatar_url" json:"avatar_url"` // 用户头像
 	Language string `bson:"language" json:"language"` // 语言
 
 	OwnGroups    []string `bson:"own_groups" json:"own_groups"`
@@ -49,37 +48,65 @@ func GetUser(unionid string) (User, error) {
 }
 
 func CreateUser(userInfo *util.DecryptUserInfo) error {
-	//if userInfo.UnionID == "" {
-	//	return constant.ErrorIDFormatWrong
-	//}
-	//query := bson.M{
-	//	"unionid": userInfo.UnionID,
-	//}
-	//user := User{}
-	//seletor := bson.M{
-	//	"unionid":  1,
-	//	"nickname": 1,
-	//}
-	cntrl := db.NewCopyMgoDBCntlr()
-	defer cntrl.Close()
+	if userInfo.UnionID == "" {
+		return constant.ErrorIDFormatWrong
+	}
+	if userInfo.AvatarURL == "" {
+		userInfo.AvatarURL = constant.WechatDefaultHeadImgURL
+	}
 
+	query := bson.M{
+		"unionid": userInfo.UnionID,
+	}
+	user := User{}
+	selector := bson.M{
+		"unionid":    1,
+		"nickname":   1,
+		"avatar_url": 1,
+	}
+
+	cntrl := db.NewCloneMgoDBCntlr()
+	defer cntrl.Close()
 	table := cntrl.GetTable(constant.TableUser)
 
-	user := User{
-		ID:       bson.NewObjectId(),
-		Openid:   userInfo.OpenID,
-		Unionid:  userInfo.UnionID,
-		Nickname: userInfo.NickName,
-		Gender:   userInfo.Gender,
-		Language: userInfo.Language,
-		Country:  userInfo.Country,
-		City:     userInfo.City,
-		Province: userInfo.Province,
+	err := table.Find(query).Select(selector).One(&user)
+	if err != nil {
+		user = User{
+			ID:        bson.NewObjectId(),
+			Openid:    userInfo.OpenID,
+			Unionid:   userInfo.UnionID,
+			Nickname:  userInfo.NickName,
+			AvatarURL: userInfo.AvatarURL,
+			Gender:    userInfo.Gender,
+			Language:  userInfo.Language,
+			Country:   userInfo.Country,
+			City:      userInfo.City,
+			Province:  userInfo.Province,
+		}
+		return table.Insert(user)
 	}
-	log.Println("aaaaaaa")
-	eil := table.Insert(user)
-	log.Println(eil)
-	return eil
+
+	// update
+	if userInfo.NickName != user.Nickname || userInfo.AvatarURL != user.AvatarURL {
+		updateMap := map[string]interface{}{
+			//"status":     status,
+			"nickname":   userInfo.NickName,
+			"avatar_url": userInfo.AvatarURL,
+			"gender":     userInfo.Gender,
+			"language":   userInfo.Language,
+			"country":    userInfo.Country,
+			"city":       userInfo.City,
+			"province":   userInfo.Province,
+		}
+		if userInfo.OpenID != "" {
+			updateMap["openid"] = userInfo.OpenID
+		}
+		update := bson.M{
+			"$set": updateMap,
+		}
+		return table.Update(query, update)
+	}
+	return nil
 
 }
 

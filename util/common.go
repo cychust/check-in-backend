@@ -5,12 +5,11 @@ import (
 	"errors"
 	"time"
 
-	"github.com/jinzhu/now"
 	timeUtil "github.com/jinzhu/now"
 
 	"github.com/imroc/req"
-	jsoniter "github.com/json-iterator/go"
-	gomail "gopkg.in/gomail.v2"
+	"github.com/json-iterator/go"
+	"gopkg.in/gomail.v2"
 )
 
 var (
@@ -89,14 +88,14 @@ func GetNextDayEndTimestamp() int64 {
 func GetNextWeekEndTimestamp() int64 {
 	return timeUtil.EndOfWeek().Add(time.Hour*24*7).UnixNano() / 1000000
 }
-
-func GetWeekStartTimestamp(t time.Time) int64 {
-	return now.New(t).BeginningOfWeek().UnixNano() / 1000000
-}
-
-func GetWeekEndTimestamp(t time.Time) int64 {
-	return now.New(t).EndOfWeek().UnixNano() / 1000000
-}
+//
+//func GetWeekStartTimestamp(t time.Time) int64 {
+//	return now.New(t).BeginningOfWeek().UnixNano() / 1000000
+//}
+//
+//func GetWeekEndTimestamp(t time.Time) int64 {
+//	return now.New(t).EndOfWeek().UnixNano() / 1000000
+//}
 
 func InitBaseMap() {
 	baseStrLen = uint64(len(baseStr))
