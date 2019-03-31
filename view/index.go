@@ -5,7 +5,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-func InitView(group *echo.Group) {
+func InitViewV1(group *echo.Group) {
 	group.POST("/login", controller.Login)
-
+	group.POST("/login-web", controller.LoginWeb)
 }

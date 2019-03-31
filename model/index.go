@@ -2,9 +2,9 @@ package model
 
 import (
 	"check-in-backend/model/db"
+	"check-in-backend/util/log"
 	"github.com/sirupsen/logrus"
 	"gopkg.in/mgo.v2/bson"
-	"phs-mp-develop/src/util/log"
 )
 
 var (

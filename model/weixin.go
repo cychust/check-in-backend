@@ -3,7 +3,9 @@ package model
 import (
 	"check-in-backend/config"
 	"check-in-backend/constant"
+	"check-in-backend/model/db"
 	"check-in-backend/util"
+	"errors"
 	"fmt"
 	"github.com/imroc/req"
 )

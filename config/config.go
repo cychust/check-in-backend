@@ -88,6 +88,7 @@ func initConfig() {
 
 	if v, ok := os.LookupEnv("CONFIG_PATH_PREFIX"); ok {
 		filePrefix = v
+		log.Println("aaaaaaa" + v)
 	}
 	// read default config
 	data, err := ioutil.ReadFile(filePrefix + fileName)

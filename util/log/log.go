@@ -27,6 +27,7 @@ func getLogger(env string) *logrus.Logger {
 	logConfig := config.Conf.Log
 
 	baseLogPath := path.Join(logConfig.LogBasePath, logConfig.LogFileName)
+
 	writer, err := rotatelogs.New(
 		baseLogPath+".%Y%m%d%H%M",
 		rotatelogs.WithLinkName(baseLogPath),      // 生成软链，指向最新日志文件

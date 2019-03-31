@@ -29,6 +29,6 @@ func main() {
 		}
 		v1.Use(middleware.JWTWithConfig(mid.CustomJWTConfig(skipperPath, "Bearer")))
 	}
-	view.InitView(v1)
+	view.InitViewV1(v1)
 	e.Logger.Fatal(e.Start(":3000"))
 }

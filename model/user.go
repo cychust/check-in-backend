@@ -1,10 +1,10 @@
 package model
 
 import (
+	"check-in-backend/constant"
 	"check-in-backend/model/db"
 	"check-in-backend/util"
 	"gopkg.in/mgo.v2/bson"
-	"phs-mp-develop/src/constant"
 )
 
 type User struct {
