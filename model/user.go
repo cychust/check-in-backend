@@ -5,20 +5,21 @@ import (
 	"check-in-backend/model/db"
 	"check-in-backend/util"
 	"gopkg.in/mgo.v2/bson"
+	"log"
 )
 
 type User struct {
 	ID bson.ObjectId `bson:"_id,omitempty" json:"id,omitempty"`
 	// WeixinUserInfo
-	Openid   string `bson:"openid" json:"openid"`     // openid
-	Unionid  string `bson:"unionid" json:"user_id"`   // unionid
-	Nickname string `bson:"nickname" json:"nickname"` // 用户昵称
-	Gender   int    `bson:"gender" json:"gender"`     // 性别 0：未知、1：男、2：女
-	Province string `bson:"province" json:"province"` // 省份
-	City     string `bson:"city" json:"city"`         // 城市
-	Country  string `bson:"country" json:"country"`   // 国家
+	Openid    string `bson:"openid" json:"openid"`         // openid
+	Unionid   string `bson:"unionid" json:"user_id"`       // unionid
+	Nickname  string `bson:"nickname" json:"nickname"`     // 用户昵称
+	Gender    int    `bson:"gender" json:"gender"`         // 性别 0：未知、1：男、2：女
+	Province  string `bson:"province" json:"province"`     // 省份
+	City      string `bson:"city" json:"city"`             // 城市
+	Country   string `bson:"country" json:"country"`       // 国家
 	AvatarURL string `bson:"avatar_url" json:"avatar_url"` // 用户头像
-	Language string `bson:"language" json:"language"` // 语言
+	Language  string `bson:"language" json:"language"`     // 语言
 
 	OwnGroups    []string `bson:"own_groups" json:"own_groups"`
 	ManageGroups []string `bson:"manage_groups" json:"manage_groups"`
@@ -63,6 +64,14 @@ func CreateUser(userInfo *util.DecryptUserInfo) error {
 		"unionid":    1,
 		"nickname":   1,
 		"avatar_url": 1,
+		//// WeixinUserInfo
+		//"openid":    1, // string `bson:"openid" json:"openid"`     // openid
+		//"gender":    1, //  int    `bson:"gender" json:"gender"`     // 性别 0：未知、1：男、2：女
+		//"province":  1, // string `bson:"province" json:"province"` // 省份
+		//"city":      1, //string `bson:"city" json:"city"`         // 城市
+		//"country":   1, //  string `bson:"country" json:"country"`   // 国家
+		//"avatarURL": 1, // string `bson:"avatar_url" json:"avatar_url"` // 用户头像
+		//"language":  1, // string `bson:"language" json:"language"` // 语言
 	}
 
 	cntrl := db.NewCloneMgoDBCntlr()
@@ -70,6 +79,9 @@ func CreateUser(userInfo *util.DecryptUserInfo) error {
 	table := cntrl.GetTable(constant.TableUser)
 
 	err := table.Find(query).Select(selector).One(&user)
+
+	log.Println(user)
+
 	if err != nil {
 		user = User{
 			ID:        bson.NewObjectId(),

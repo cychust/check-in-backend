@@ -6,7 +6,6 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"errors"
-	"log"
 )
 
 var (
@@ -65,29 +64,20 @@ func pkcs7Unpad(data []byte, blockSize int) ([]byte, error) {
 func (w *WXBizDataCrypt) Decrypt(encryptedData, iv string) (*DecryptUserInfo, error) {
 	aesKey, err := base64.StdEncoding.DecodeString(w.sessionKey)
 	if err != nil {
-		log.Print("errr")
-		log.Println(err)
 		return nil, err
 	}
 	cipherText, err := base64.StdEncoding.DecodeString(encryptedData)
 	if err != nil {
 
-		log.Print("errr2")
-		log.Println(err)
 		return nil, err
 	}
 	ivBytes, err := base64.StdEncoding.DecodeString(iv)
 	if err != nil {
 
-		log.Print("errr3")
-		log.Println(err)
 		return nil, err
 	}
 	block, err := aes.NewCipher(aesKey)
 
-	log.Println(ivBytes)
-	log.Println(len(ivBytes))
-	log.Println(block.BlockSize())
 
 	if err != nil {
 		return nil, err

@@ -10,6 +10,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/sirupsen/logrus"
 	"net/http"
+	logg "log"
 )
 
 var indexLogger = log.GetLogger()
@@ -22,6 +23,8 @@ func Login(c echo.Context) error {
 		writeIndexLog("Login", constant.ErrorMsgParamWrong, err)
 		return retError(c, http.StatusBadRequest, constant.ErrorMsgParamWrong)
 	}
+
+	logg.Println(data)
 
 	writeIndexLog("login", "sss", err)
 
@@ -36,22 +39,23 @@ func Login(c echo.Context) error {
 
 	var userInfo *util.DecryptUserInfo
 	if weixinSessRes.Unionid == "" {
-		//userInfo, err = model.DecryptWeixinEncryptedData(weixinSessRes.SessionKey, data.EncryptedData, data.Iv)
-		//if err != nil {
-		//	writeIndexLog("DecryptWei", constant.ErrorMsgParamWrong, err)
-		//	return retError(c, http.StatusBadRequest, constant.ErrorMsgParamWrong)
-		//}
-		userInfo = &util.DecryptUserInfo{
-			UnionID:   "111111111111",
-			OpenID:    "1111111111111",
-			NickName:  data.UserInfo.Nickname,
-			Gender:    data.UserInfo.Gender,
-			Province:  data.UserInfo.Province,
-			City:      data.UserInfo.City,
-			Country:   data.UserInfo.Country,
-			AvatarURL: data.UserInfo.AvatarURL,
-			Language:  data.UserInfo.Language,
+		userInfo, err = model.DecryptWeixinEncryptedData(weixinSessRes.SessionKey, data.EncryptedData, data.Iv)
+		if err != nil {
+			writeIndexLog("DecryptWei", constant.ErrorMsgParamWrong, err)
+			return retError(c, http.StatusBadRequest, constant.ErrorMsgParamWrong)
 		}
+		logg.Println(userInfo)
+		//userInfo = &util.DecryptUserInfo{
+		//	UnionID:   "111111111111",
+		//	OpenID:    "1111111111111",
+		//	NickName:  data.UserInfo.Nickname,
+		//	Gender:    data.UserInfo.Gender,
+		//	Province:  data.UserInfo.Province,
+		//	City:      data.UserInfo.City,
+		//	Country:   data.UserInfo.Country,
+		//	AvatarURL: data.UserInfo.AvatarURL,
+		//	Language:  data.UserInfo.Language,
+		//}
 	} else {
 		userInfo = &util.DecryptUserInfo{
 			UnionID:   weixinSessRes.Unionid,
