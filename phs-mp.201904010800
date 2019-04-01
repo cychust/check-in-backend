@@ -16,3 +16,28 @@
 {"err":null,"file":"index.go","function":"login","level":"warning","msg":"d0XNqiu95I4HHle2UmXugA==","package":"controller","time":"2019-04-01T12:18:50+08:00"}
 {"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T12:19:55+08:00"}
 {"err":null,"file":"index.go","function":"login","level":"warning","msg":"d0XNqiu95I4HHle2UmXugA==","package":"controller","time":"2019-04-01T12:19:55+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T12:48:34+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"lfAyrMnGWjpTR/tmH2p0yg==","package":"controller","time":"2019-04-01T12:48:35+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T13:07:41+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"I7XGuoEX6rFbdi5aqFuPUg==","package":"controller","time":"2019-04-01T13:07:42+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T13:10:45+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"3llH/JBXWK0f4g7Tz/OVjA==","package":"controller","time":"2019-04-01T13:10:46+08:00"}
+{"err":"not found","file":"index.go","function":"GetGroup","level":"warning","msg":"查询群组信息错误","package":"controller","time":"2019-04-01T16:12:11+08:00"}
+{"err":"not found","file":"index.go","function":"GetGroup","level":"warning","msg":"查询群组信息错误","package":"controller","time":"2019-04-01T16:13:09+08:00"}
+{"err":"not found","file":"index.go","function":"GetGroup","level":"warning","msg":"查询群组信息错误","package":"controller","time":"2019-04-01T16:17:19+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T16:17:37+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"BW5SKPyd/a4LHhfOuFgfrA==","package":"controller","time":"2019-04-01T16:17:38+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T16:23:27+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"YOFaMpzXXsi29OZL7XqVKg==","package":"controller","time":"2019-04-01T16:23:28+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T16:24:27+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"Rr6D6nbWXvvHCoofhxSrsw==","package":"controller","time":"2019-04-01T16:24:27+08:00"}
+{"err":"not found","file":"index.go","function":"DeleteGroups","level":"warning","msg":"删除圈子错误","package":"controller","time":"2019-04-01T17:04:31+08:00"}
+{"err":"not found","file":"index.go","function":"DeleteGroups","level":"warning","msg":"删除圈子错误","package":"controller","time":"2019-04-01T17:11:46+08:00"}
+{"err":"not found","file":"index.go","function":"DeleteGroups","level":"warning","msg":"删除圈子错误","package":"controller","time":"2019-04-01T17:20:50+08:00"}
+{"err":"ObjectIDs must be exactly 12 bytes long (got 24)","file":"index.go","function":"DeleteGroups","level":"warning","msg":"删除圈子错误","package":"controller","time":"2019-04-01T17:22:10+08:00"}
+{"err":"not found","file":"group.go","function":"1","level":"warning","msg":"ssss","package":"controller","time":"2019-04-01T17:24:22+08:00"}
+{"err":"not found","file":"index.go","function":"DeleteGroups","level":"warning","msg":"删除圈子错误","package":"controller","time":"2019-04-01T17:24:22+08:00"}
+{"err":"not found","file":"group.go","function":"1","level":"warning","msg":"ssss","package":"controller","time":"2019-04-01T17:28:29+08:00"}
+{"err":"not found","file":"index.go","function":"DeleteGroups","level":"warning","msg":"删除圈子错误","package":"controller","time":"2019-04-01T17:28:29+08:00"}
+{"err":"not found","file":"group.go","function":"1","level":"warning","msg":"ssss","package":"controller","time":"2019-04-01T17:28:32+08:00"}
+{"err":"not found","file":"index.go","function":"DeleteGroups","level":"warning","msg":"删除圈子错误","package":"controller","time":"2019-04-01T17:28:32+08:00"}

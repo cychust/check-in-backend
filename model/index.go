@@ -1,16 +1,24 @@
 package model
 
 import (
+	"check-in-backend/constant"
 	"check-in-backend/model/db"
 	"check-in-backend/util/log"
 	"github.com/sirupsen/logrus"
 	"gopkg.in/mgo.v2/bson"
+	"math/rand"
+	"time"
 )
 
 var (
 	indexLogger            = log.GetLogger()
 	DefaultSelector bson.M = bson.M{}
 )
+
+func getRedisDefaultExpire() int64 {
+	rand.Seed(time.Now().UnixNano())
+	return constant.RedisDefaultExpire + rand.Int63n(constant.RedisDefaultRandExpire)
+}
 
 func WriteLog(funcName, filename, errMsg string, err error) {
 	writeLog(funcName, filename, errMsg, err)

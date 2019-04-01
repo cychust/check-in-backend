@@ -3,6 +3,7 @@ package util
 import (
 	"check-in-backend/config"
 	"errors"
+	"math/rand"
 	"time"
 
 	timeUtil "github.com/jinzhu/now"
@@ -81,13 +82,23 @@ func GetNowTimestamp() int64 {
 	return time.Now().UnixNano() / 1000000
 }
 
+func GetNextAvatarURL() string {
+	var urls []string
+	urls = make([]string, 10)
+	urls[0] = "https://raw.githubusercontent.com/cychust/check-in/master/backgrounds/1.jpeg"
+	urls[1] = "https://raw.githubusercontent.com/cychust/check-in/master/backgrounds/1.jpeg"
+	urls[2] = "https://raw.githubusercontent.com/cychust/check-in/master/backgrounds/1.jpeg"
+	return urls[rand.Int()%2]
+}
+
 func GetNextDayEndTimestamp() int64 {
-	return timeUtil.EndOfDay().Add(time.Hour*24).UnixNano() / 1000000
+	return timeUtil.EndOfDay().Add(time.Hour * 24).UnixNano() / 1000000
 }
 
 func GetNextWeekEndTimestamp() int64 {
-	return timeUtil.EndOfWeek().Add(time.Hour*24*7).UnixNano() / 1000000
+	return timeUtil.EndOfWeek().Add(time.Hour * 24 * 7).UnixNano() / 1000000
 }
+
 //
 //func GetWeekStartTimestamp(t time.Time) int64 {
 //	return now.New(t).BeginningOfWeek().UnixNano() / 1000000

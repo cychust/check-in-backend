@@ -8,4 +8,7 @@ import (
 func InitViewV1(group *echo.Group) {
 	group.POST("/login", controller.Login)
 	group.POST("/login-web", controller.LoginWeb)
+
+	groupView := group.Group("/group")
+	InitGroupView(groupView)
 }

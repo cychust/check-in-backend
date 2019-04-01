@@ -39,6 +39,11 @@ type CodeParam struct {
 	Code string `json:"code" query:"code" validate:"required"`
 }
 
+type DeleteParam struct {
+	GroupIDParam
+	OwnerId string `json:"owner_id" query:"owner_id" validate:"required"`
+}
+
 //type NoticesParam struct {
 //	Notices []model.Notice `json:"notices"`
 //}
