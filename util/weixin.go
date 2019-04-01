@@ -17,7 +17,7 @@ var (
 
 type DecryptUserInfo struct {
 	OpenID    string `json:"openId"`   // 注意是openId!
-	UnionID   string `json:"unionId"`  // 注意是unionId!
+	//UnionID   string `json:"unionId"`  // 注意是unionId!
 	NickName  string `json:"nickName"` // 注意是nickName!
 	Gender    int    `json:"gender"`
 	City      string `json:"city"`

@@ -18,7 +18,7 @@ type WeixinTokenRes struct {
 }
 
 type WeixinSessRes struct {
-	Unionid    string `json:"unionid"`
+	//Unionid    string `json:"unionid"`
 	Openid     string `json:"openid"`
 	SessionKey string `json:"session_key"`
 	Errcode    int    `json:"errcode"`
@@ -93,7 +93,7 @@ func GetWeixinWebUserInfo(accessToken, openid string) (*util.DecryptUserInfo, er
 
 	return &util.DecryptUserInfo{
 		OpenID:    userInfo.Openid,
-		UnionID:   userInfo.Unionid,
+		//UnionID:   userInfo.Unionid,
 		NickName:  userInfo.Nickname,
 		Gender:    userInfo.Sex,
 		City:      userInfo.City,

@@ -1,0 +1,18 @@
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T11:27:26+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"fZLupSbjIDKrXtjm8qVh1A==","package":"controller","time":"2019-04-01T11:27:27+08:00"}
+{"err":"invalid character '±' looking for beginning of value","file":"index.go","function":"DecryptWei","level":"warning","msg":"param wrong","package":"controller","time":"2019-04-01T11:27:27+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T11:33:12+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"UdMQF9anhBVJsy8ftAlMww==","package":"controller","time":"2019-04-01T11:33:12+08:00"}
+{"err":"code=400, message=Unmarshal type error: expected=param.userInfo, got=string, field=userInfo, offset=56","file":"index.go","function":"Login","level":"warning","msg":"param wrong","package":"controller","time":"2019-04-01T11:35:09+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T11:35:50+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"Ic27lolJgN9X5CBMIpLcTg==","package":"controller","time":"2019-04-01T11:35:51+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T11:42:47+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"NHq+4Q/GfKZBqB0XXeasTw==","package":"controller","time":"2019-04-01T11:42:47+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T12:10:03+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"748pXsMB1P3xA/xDDjS1WA==","package":"controller","time":"2019-04-01T12:10:03+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T12:18:23+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"d0XNqiu95I4HHle2UmXugA==","package":"controller","time":"2019-04-01T12:18:24+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T12:18:49+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"d0XNqiu95I4HHle2UmXugA==","package":"controller","time":"2019-04-01T12:18:50+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"sss","package":"controller","time":"2019-04-01T12:19:55+08:00"}
+{"err":null,"file":"index.go","function":"login","level":"warning","msg":"d0XNqiu95I4HHle2UmXugA==","package":"controller","time":"2019-04-01T12:19:55+08:00"}

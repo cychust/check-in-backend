@@ -66,7 +66,7 @@ func getGroupCode() (string, error) {
 	return cntrl.LPOP(constant.RedisGroupCodePool)
 }
 
-func CreateGroup(unionid, title string) (string, error) {
+func CreateGroup(openid, title string) (string, error) {
 
 	var code string
 	for i := 0; i < 5; i++ {
@@ -82,7 +82,7 @@ func CreateGroup(unionid, title string) (string, error) {
 		Code:       code,
 		//AvatarURL:  avatarURL,
 		Title:     title,
-		OwnerID:   unionid,
+		OwnerID:   openid,//todo
 		PersonNum: 1,
 	}
 	err := insertGroups(group)
@@ -92,7 +92,7 @@ func CreateGroup(unionid, title string) (string, error) {
 	}
 
 	go func() {
-		AddUserOwnGroup(unionid, group.ID.Hex())
+		AddUserOwnGroup(openid, group.ID.Hex())
 		qrcode, _ := CreateQrcodeByGroupCode(code)
 		if qrcode.Ticket != "" {
 			qrcode.Ticket = fmt.Sprintf(constant.URLQrcodeTicket, qrcode.Ticket)

@@ -12,7 +12,7 @@ type User struct {
 	ID bson.ObjectId `bson:"_id,omitempty" json:"id,omitempty"`
 	// WeixinUserInfo
 	Openid    string `bson:"openid" json:"openid"`         // openid
-	Unionid   string `bson:"unionid" json:"user_id"`       // unionid
+	//Unionid   string `bson:"unionid" json:"user_id"`       // unionid
 	Nickname  string `bson:"nickname" json:"nickname"`     // 用户昵称
 	Gender    int    `bson:"gender" json:"gender"`         // 性别 0：未知、1：男、2：女
 	Province  string `bson:"province" json:"province"`     // 省份
@@ -34,7 +34,7 @@ func GetUser(unionid string) (User, error) {
 	selector := bson.M{
 		"_id":           0,
 		"openid":        0,
-		"unionid":       0,
+		//"unionid":       0,
 		"own_groups":    0,
 		"manage_groups": 0,
 		"join_groups":   0,
@@ -49,29 +49,22 @@ func GetUser(unionid string) (User, error) {
 }
 
 func CreateUser(userInfo *util.DecryptUserInfo) error {
-	if userInfo.UnionID == "" {
-		return constant.ErrorIDFormatWrong
-	}
+	//if userInfo.UnionID == "" {
+	//	return constant.ErrorIDFormatWrong
+	//}
 	if userInfo.AvatarURL == "" {
 		userInfo.AvatarURL = constant.WechatDefaultHeadImgURL
 	}
 
 	query := bson.M{
-		"unionid": userInfo.UnionID,
+		//"unionid": userInfo.UnionID,
+		"openid": userInfo.OpenID,
 	}
 	user := User{}
 	selector := bson.M{
 		"unionid":    1,
 		"nickname":   1,
 		"avatar_url": 1,
-		//// WeixinUserInfo
-		//"openid":    1, // string `bson:"openid" json:"openid"`     // openid
-		//"gender":    1, //  int    `bson:"gender" json:"gender"`     // 性别 0：未知、1：男、2：女
-		//"province":  1, // string `bson:"province" json:"province"` // 省份
-		//"city":      1, //string `bson:"city" json:"city"`         // 城市
-		//"country":   1, //  string `bson:"country" json:"country"`   // 国家
-		//"avatarURL": 1, // string `bson:"avatar_url" json:"avatar_url"` // 用户头像
-		//"language":  1, // string `bson:"language" json:"language"` // 语言
 	}
 
 	cntrl := db.NewCloneMgoDBCntlr()
@@ -86,7 +79,7 @@ func CreateUser(userInfo *util.DecryptUserInfo) error {
 		user = User{
 			ID:        bson.NewObjectId(),
 			Openid:    userInfo.OpenID,
-			Unionid:   userInfo.UnionID,
+			//Unionid:   userInfo.UnionID,
 			Nickname:  userInfo.NickName,
 			AvatarURL: userInfo.AvatarURL,
 			Gender:    userInfo.Gender,
@@ -131,7 +124,8 @@ func AddUserOwnGroup(unionid, id string) error {
 	defer cntrl.Close()
 	table := cntrl.GetTable(constant.TableUser)
 	query := bson.M{
-		"unionid": unionid,
+		//"unionid": unionid,
+		//"openid":
 	}
 	update := bson.M{
 		"$addToSet": bson.M{

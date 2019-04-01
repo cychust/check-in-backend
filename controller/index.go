@@ -9,8 +9,8 @@ import (
 	"check-in-backend/util/token"
 	"github.com/labstack/echo"
 	"github.com/sirupsen/logrus"
-	"net/http"
 	logg "log"
+	"net/http"
 )
 
 var indexLogger = log.GetLogger()
@@ -38,27 +38,17 @@ func Login(c echo.Context) error {
 	writeIndexLog("login", weixinSessRes.SessionKey, err)
 
 	var userInfo *util.DecryptUserInfo
-	if weixinSessRes.Unionid == "" {
+	if weixinSessRes.Openid == "" {
 		userInfo, err = model.DecryptWeixinEncryptedData(weixinSessRes.SessionKey, data.EncryptedData, data.Iv)
 		if err != nil {
 			writeIndexLog("DecryptWei", constant.ErrorMsgParamWrong, err)
 			return retError(c, http.StatusBadRequest, constant.ErrorMsgParamWrong)
 		}
+		logg.Println("abc")
 		logg.Println(userInfo)
-		//userInfo = &util.DecryptUserInfo{
-		//	UnionID:   "111111111111",
-		//	OpenID:    "1111111111111",
-		//	NickName:  data.UserInfo.Nickname,
-		//	Gender:    data.UserInfo.Gender,
-		//	Province:  data.UserInfo.Province,
-		//	City:      data.UserInfo.City,
-		//	Country:   data.UserInfo.Country,
-		//	AvatarURL: data.UserInfo.AvatarURL,
-		//	Language:  data.UserInfo.Language,
-		//}
 	} else {
 		userInfo = &util.DecryptUserInfo{
-			UnionID:   weixinSessRes.Unionid,
+			//UnionID:   weixinSessRes.Unionid,
 			OpenID:    weixinSessRes.Openid,
 			NickName:  data.UserInfo.Nickname,
 			Gender:    data.UserInfo.Gender,
@@ -77,7 +67,7 @@ func Login(c echo.Context) error {
 	}
 
 	jwtAuth := map[string]interface{}{
-		"user_id": userInfo.UnionID,
+		"user_id": userInfo.OpenID, //todo
 	}
 	jwtToken := token.GetJWTToken(jwtAuth)
 
@@ -113,7 +103,7 @@ func LoginWeb(c echo.Context) error {
 		return retError(c, http.StatusBadGateway, "get userInfo faild")
 	}
 	jwtAuth := map[string]interface{}{
-		"user_id": userInfo.UnionID,
+		"user_id": userInfo.OpenID, //todo
 	}
 	jwtToken := token.GetJWTToken(jwtAuth)
 	resData := map[string]interface{}{
